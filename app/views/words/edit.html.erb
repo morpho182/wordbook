@@ -1,0 +1,25 @@
+<div class='text-center'>
+  <h1>Words#id:<%= @word.id %>#edit</h1>
+</div>
+
+<div class="row">
+  <div class=" col-sm-6 offset-sm-3">
+    <%= form_with(model: @word, local: true) do |f| %>
+
+      <div class="form-group">
+          <%= f.label :word, 'word' %>
+          <%= f.text_field :word,  class: "form-control" %>
+      </div>
+      <div class="form-group">
+          <%= f.label :defnition, 'definition' %>
+          <%= f.text_field :definition, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+          <%= f.label :link, 'link' %>
+          <%= f.text_field :link, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '更新', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

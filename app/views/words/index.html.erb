@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h1>Words#index</h1>
+</div>
+
+<div class="row">
+  <aside class="col-sm-3">
+    <h4>Folder</h4>
+    <ul>
+      <li>folder-1</li>
+      <li>folder-2</li>
+    </ul>
+  </aside>
+  
+  <div class="col-sm-9">
+    
+    <%= render 'words/words', words: @words %>
+    
+    <div class="text-center">
+      <%= link_to 'word 作成', new_word_url, class: 'btn btn-primary' %> 
+    </div>
+  </div>
+</div>
