@@ -1,0 +1,10 @@
+<div class='text-center'>
+  <h1><%= @folder.name %></h1>
+  <%= link_to 'フォルダを編集', edit_folder_path(@folder), class: 'btn btn-primary' %>
+  <%= link_to 'フォルダを削除', @folder, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
+</div>
+
+<ul>
+  <li>word-2</li>
+  <li>word-1</li>
+</ul>

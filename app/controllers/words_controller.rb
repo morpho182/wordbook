@@ -4,6 +4,7 @@ class WordsController < ApplicationController
   
   def index
     @words = current_user.words.order(id: :desc).page(params[:page])
+    @folders = current_user.folders.order(id: :desc).page(params[:page])
   end
 
   def show

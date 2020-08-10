@@ -4,11 +4,8 @@
 
 <div class="row">
   <aside class="col-sm-3">
-    <h4>Folder</h4>
-    <ul>
-      <li>folder-1</li>
-      <li>folder-2</li>
-    </ul>
+    <h4><%= link_to 'Folder', folders_path %></h4>
+      <%= render 'folders/folders', folders: @folders %>
   </aside>
   
   <div class="col-sm-9">

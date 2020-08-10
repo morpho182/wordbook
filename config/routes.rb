@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   
   resources :words
+  resources :folders, only: [:index, :show, :create, :edit, :update, :destroy]
 end

@@ -1,0 +1,15 @@
+<div class='text-center'>
+  <h1><%= @folder.name %>#edit</h1>
+</div>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: @folder, local: true) do |f| %>
+      <div class="form-group">
+        <%= f.label :name, 'Name' %>
+        <%= f.text_field :name,  class: "form-control" %>
+      </div>
+
+      <%= f.submit '変更', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

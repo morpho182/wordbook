@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <% folders.each do |folder| %>
+    <li class="list-group-item">
+       <%= link_to folder.name, folder %></li>
+    </li>
+  <% end %>
+  <%= paginate folders %>
+</ul>
