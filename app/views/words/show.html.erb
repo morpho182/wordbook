@@ -4,15 +4,23 @@
 
 <table class="table table-striped table-bordered col-sm-6 offset-sm-3">
   <tr>
-    <td>word</td>
+    <td>Word</td>
     <td><%= @word.word %></td>  </tr>
   <tr>
-    <td>definition</td>
+    <td>Definition</td>
     <td><%= @word.definition %></td>
   </tr>
   <tr>
-    <td>link</td>
+    <td>Link</td>
     <td><%= @word.link %></td>
+  </tr>
+  <tr>
+    <td>Folder</td>
+    <td>
+      <% @word.folders.each do |folder| %>
+        <%= folder.name %> ,
+      <% end %>
+    </td>
   </tr>
 </table>
 <div class="text-center">

@@ -1,10 +1,26 @@
 <div class='text-center'>
-  <h1><%= @folder.name %></h1>
+  <h1><%= @folder.name %>#show</h1>
+</div>
+<div class='text-right'>
   <%= link_to 'フォルダを編集', edit_folder_path(@folder), class: 'btn btn-primary' %>
   <%= link_to 'フォルダを削除', @folder, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
 </div>
+<div class='text-center'>
+  <h2>words in the <%= @folder.name %></h2>
+</div>
 
-<ul>
-  <li>word-2</li>
-  <li>word-1</li>
-</ul>
+<div class="row">
+  <aside class="col-sm-3">
+    <h4><%= link_to 'Folder', folders_path %></h4>
+      <%= render 'folders/folders', folders: @folders %>
+  </aside>
+  
+  <div class="col-sm-9">
+    
+    <%= render 'words/words', words: @words_classify %>
+    
+    <div class="text-center">
+      <%= link_to 'word 作成', new_word_url, class: 'btn btn-primary' %> 
+    </div>
+  </div>
+</div>

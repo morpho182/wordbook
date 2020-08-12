@@ -1,22 +1,28 @@
-    <div class="row">
-      <table class="table table-striped table-bordered">
-        <tr>
-          <th>Word</th>
-          <th>Definition</th>
-          <th>Link</th>
-        </tr>
-        <% words.each do |word| %>
-          <tr>
-            <td><%= link_to(word.word, word_path(word.id)) %></td>
-            <td><%= word.definition %></td>
-            <% if word.link.empty? %>
-              <td>N/A</td>
-            <% else %>
-              <td><%= link_to('link', word.link) %></td>
-            <% end %>
-          </tr>
+<div class="row">
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Word</th>
+      <th>Definition</th>
+      <th>Link</th>
+      <th>Folder</th>
+    </tr>
+    <% words.each do |word| %>
+      <tr>
+        <td><%= link_to(word.word, word_path(word.id)) %></td>
+        <td><%= word.definition %></td>
+        <% if word.link.empty? %>
+          <td>N/A</td>
+        <% else %>
+          <td><%= link_to('link', word.link) %></td>
         <% end %>
-      </table>
-    </div>
-  <%= paginate words %>
+        <td>
+          <% word.folders.each do |folder| %>
+          <%= folder.name %> ,
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<%= paginate words %>
   

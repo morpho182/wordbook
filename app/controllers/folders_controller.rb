@@ -3,12 +3,16 @@ class FoldersController < ApplicationController
   before_action :correct_user, only: [:destroy]
   
   def index
-    @folders = current_user.folders.order(id: :desc).page(params[:page])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
     @folder = Folder.new
   end
   
   def show
     @folder = Folder.find(params[:id])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
+    
+    @words = current_user.words.order(id: :desc).page(params[:page])
+    @words_classify = @folder.words.order(id: :desc).page(params[:page])
   end
   
   def new

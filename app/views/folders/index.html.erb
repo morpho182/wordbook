@@ -9,8 +9,8 @@
       
     <%= form_with(model: @folder, local: true) do |f| %>
       <div class="form-group">
-      <%= f.label :name, 'Folder Name' %>
-      <%= f.text_field :name,  class: "form-control" %>
+        <h5><%= f.label :name, 'New Folder Name' %></h5>
+        <%= f.text_field :name,  class: "form-control" %>
       </div>
 
       <%= f.submit '作成', class: 'btn btn-primary' %>
