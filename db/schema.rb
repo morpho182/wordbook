@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_231324) do
+ActiveRecord::Schema.define(version: 2020_08_10_012614) do
+
+  create_table "classifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "word_id"
+    t.bigint "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_classifications_on_folder_id"
+    t.index ["word_id", "folder_id"], name: "index_classifications_on_word_id_and_folder_id", unique: true
+    t.index ["word_id"], name: "index_classifications_on_word_id"
+  end
 
   create_table "folders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -38,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_08_09_231324) do
     t.index ["user_id"], name: "index_words_on_user_id"
   end
 
+  add_foreign_key "classifications", "folders"
+  add_foreign_key "classifications", "words"
   add_foreign_key "folders", "users"
   add_foreign_key "words", "users"
 end

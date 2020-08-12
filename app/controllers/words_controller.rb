@@ -2,13 +2,19 @@ class WordsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:destroy]
   
+  protect_from_forgery with: :null_session
+  
+  # before_action :link_string, only: [:create, :update]  
+  
   def index
     @words = current_user.words.order(id: :desc).page(params[:page])
-    @folders = current_user.folders.order(id: :desc).page(params[:page])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
   end
 
   def show
     @word = current_user.words.find_by(id: params[:id])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
+    @folder = @word.folders
   end
 
   def new
@@ -29,6 +35,7 @@ class WordsController < ApplicationController
 
   def edit
     @word = Word.find(params[:id])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
   end
 
   def update
@@ -55,6 +62,10 @@ class WordsController < ApplicationController
     params.require(:word).permit(:word, :definition, :link)
   end
   
+  def link_string
+    params[:word][:link] = params[:word][:link].join('/') 
+  end
+    
   def correct_user
     @word = current_user.words.find_by(id: params[:id])
     unless @word

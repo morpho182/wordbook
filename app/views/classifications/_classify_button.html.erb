@@ -1,0 +1,11 @@
+  <% if @word.classify?(folder) %>
+    <%= form_with(model: @word.classifications.find_by(folder_id: folder.id), local: true, method: :delete) do |f| %>
+      <%= hidden_field_tag :folder_id, folder.id %>
+      <%= f.submit 'Unclassify', class: 'btn btn-danger' %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: @word.classifications.build, local: true) do |f| %>
+      <%= hidden_field_tag :folder_id, folder.id %>
+      <%= f.submit 'Classify', class: 'btn btn-primary' %>
+    <% end %>
+  <% end %>
