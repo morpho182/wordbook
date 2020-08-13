@@ -1,0 +1,22 @@
+<div class='text-center'>
+  <h1>Users#id:<%= @user.id %>#Password#edit</h1>
+</div>
+
+<div class="row">
+  <div class=" col-sm-6 offset-sm-3">
+    <%= form_with(model: @user, url: passwords_path, local: true) do |f| %>
+
+      <div class="form-group">
+          <%= f.label :password, 'New Password' %>
+          <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+          <%= f.label :password_confirmation, 'Confirm New Password' %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+
+      <%= f.submit '更新', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
