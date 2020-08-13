@@ -1,4 +1,6 @@
 class PasswordsController < ApplicationController
+  before_action :require_user_logged_in
+  
   def edit
     @user = User.find(params[:id])
   end

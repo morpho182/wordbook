@@ -4,7 +4,7 @@ class WordsController < ApplicationController
   
   protect_from_forgery with: :null_session
   
-  # before_action :link_string, only: [:create, :update]  
+  # before_action :folders_string, only: [:create, :update]  
   
   def index
     @words = current_user.words.order(id: :desc).page(params[:page])
@@ -52,7 +52,7 @@ class WordsController < ApplicationController
 
   def destroy
     @word.destroy
-    flash[:success] = 'メッセージを削除しました。'
+    flash[:success] = 'word を削除しました。'
     redirect_to words_path
   end
   
@@ -62,8 +62,8 @@ class WordsController < ApplicationController
     params.require(:word).permit(:word, :definition, :link)
   end
   
-  def link_string
-    params[:word][:link] = params[:word][:link].join('/') 
+  def folders_string
+    params[:word][:folders] = params[:word][:folders].join(',') 
   end
     
   def correct_user
