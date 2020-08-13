@@ -24,12 +24,14 @@ class WordsController < ApplicationController
   def create
     @word = current_user.words.build(word_params)
     if @word.save
-      flash[:success] = 'メッセージを投稿しました。'
-      redirect_to words_path
+      flash[:success] = 'word を作成しました。'
+      redirect_to word_path(@word.id)
     else
       @words = current_user.words.order(id: :desc).page(params[:page])
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
-      render 'words/index'
+      # flash.now[:danger] = 'word の作成に失敗しました。'
+      # render 'words/index'
+      flash[:danger] = 'word の作成に失敗しました。'
+      redirect_to new_word_path(@word.id)
     end
   end
 
@@ -45,8 +47,10 @@ class WordsController < ApplicationController
       flash[:success] = 'word は正常に更新されました'
       redirect_to word_path(@word.id)
     else
-      flash.now[:danger] = 'word は更新されませんでした'
-      render :edit
+      # flash.now[:danger] = 'word は更新されませんでした'
+      # render 'words/edit'
+      flash[:danger] = 'word は更新されませんでした'
+      redirect_to edit_word_path(@word.id)
     end
   end
 

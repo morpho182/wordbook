@@ -21,6 +21,13 @@
           <%= f.text_field :link, class: 'form-control' %>
       </div>
       
+      <%= f.submit '更新', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class=" col-sm-6 offset-sm-3">
       Folder
       <table class="table table-striped table-bordered col-sm-6">
         <% @folders.each do |folder| %>
@@ -44,7 +51,5 @@
           </tr>
         <% end %>
       </table>
-      <%= f.submit '更新', class: 'btn btn-primary' %>
-    <% end %>
   </div>
 </div>
