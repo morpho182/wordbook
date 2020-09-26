@@ -1,19 +1,22 @@
 <div class='text-center'>
-  <h1>Folder#index</h1>
+  <h1>Folder 一覧</h1>
 </div>
 
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
       
     <%= render 'folders/folders', folders: @folders %>
-      
+    
+    <div id="new-folder">
+      <h3 align="center">Folder 新規作成</h3>
     <%= form_with(model: @folder, local: true) do |f| %>
       <div class="form-group">
-        <h5><%= f.label :name, 'New Folder Name' %></h5>
+        <h5><%= f.label :name, 'Name' %></h5>
         <%= f.text_field :name,  class: "form-control" %>
       </div>
 
       <%= f.submit '作成', class: 'btn btn-primary' %>
+    </div>
     <% end %>
   </div>
 </div>

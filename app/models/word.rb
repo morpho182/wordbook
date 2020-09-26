@@ -3,7 +3,7 @@ class Word < ApplicationRecord
   
   validates :word, presence: true, length: { maximum: 255 }
   validates :definition, length: { maximum: 255 }
-  validates :link, length: { maximum: 255 }
+  validates :link, length: { maximum: 255 }, format: /\A#{URI::regexp(%w(http https))}\z/
   
   has_many :classifications, dependent: :destroy
   has_many :folders, through: :classifications, source: :folder

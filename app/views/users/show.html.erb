@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1>Users#show</h1>
+  <h1>My Profile</h1>
 </div>
 <div class="row">
   <table class="table table-striped table-bordered col-sm-6 offset-sm-3">
@@ -14,6 +14,6 @@
   </table>
 </div>
 <div class="text-center">
-   <%= link_to 'user 編集', edit_user_path(@user.id), class: 'btn btn-primary' %> 
-   <%= link_to 'password 変更', edit_passwords_path(@user.id), class: 'btn btn-primary' %> 
+  <%= link_to 'My Profile 編集', edit_user_path(@user.id), class: 'btn btn-primary' %> 
+  <%= link_to 'Password 変更', edit_passwords_path(@user.id), class: 'btn btn-primary' %> 
 </div>

@@ -19,6 +19,7 @@ class WordsController < ApplicationController
 
   def new
     @word = Word.new
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
   end
 
   def create
