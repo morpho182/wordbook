@@ -9,4 +9,11 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def ensure_current_user
+    if @current_user.id != params[:id].to_i
+      flash[:danger]="アクセスできません"
+      redirect_to words_url
+    end
+  end
 end

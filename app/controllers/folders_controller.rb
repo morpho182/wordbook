@@ -1,5 +1,6 @@
 class FoldersController < ApplicationController
   before_action :require_user_logged_in
+  before_action :ensure_current_user_2, only: [:show, :edit]
   before_action :correct_user, only: [:destroy]
   
   def index
@@ -62,7 +63,15 @@ class FoldersController < ApplicationController
   def correct_user
     @folder = current_user.folders.find_by(id: params[:id])
     unless @folder
-      redirect_to root_url
+      redirect_to words_url
+    end
+  end
+  
+  def ensure_current_user_2
+    @folder = current_user.folders.find_by(id: params[:id])
+    unless @folder
+      flash[:danger]="アクセスできません"
+      redirect_to words_url
     end
   end
 end

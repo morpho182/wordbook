@@ -1,5 +1,6 @@
 class WordsController < ApplicationController
   before_action :require_user_logged_in
+  before_action :ensure_current_user_2, only: [:show, :edit]
   before_action :correct_user, only: [:destroy]
   
   protect_from_forgery with: :null_session
@@ -71,7 +72,15 @@ class WordsController < ApplicationController
   def correct_user
     @word = current_user.words.find_by(id: params[:id])
     unless @word
-      redirect_to 'words/index'
+      redirect_to word_url
+    end
+  end
+  
+  def ensure_current_user_2
+    @word = current_user.words.find_by(id: params[:id])
+    unless @word
+      flash[:danger]="アクセスできません"
+      redirect_to words_url
     end
   end
 end
