@@ -31,8 +31,8 @@ class WordsController < ApplicationController
       @words = current_user.words.order(id: :desc).page(params[:page])
       # flash.now[:danger] = 'word の作成に失敗しました。'
       # render 'words/index'
-      flash[:danger] = 'word の作成に失敗しました。'
-      redirect_to new_word_path(@word.id)
+      flash.now[:danger] = 'word の作成に失敗しました。'
+      render new_word_path
     end
   end
 
