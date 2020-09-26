@@ -10,6 +10,8 @@
     <div id="new-folder">
       <h3 align="center">Folder 新規作成</h3>
     <%= form_with(model: @folder, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
       <div class="form-group">
         <h5><%= f.label :name, 'Name' %></h5>
         <%= f.text_field :name,  class: "form-control" %>

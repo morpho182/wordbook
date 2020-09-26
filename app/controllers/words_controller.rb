@@ -29,10 +29,8 @@ class WordsController < ApplicationController
       redirect_to word_path(@word.id)
     else
       @words = current_user.words.order(id: :desc).page(params[:page])
-      # flash.now[:danger] = 'word の作成に失敗しました。'
-      # render 'words/index'
       flash.now[:danger] = 'word の作成に失敗しました。'
-      render new_word_path
+      render :new
     end
   end
 
@@ -43,15 +41,14 @@ class WordsController < ApplicationController
 
   def update
     @word = Word.find(params[:id])
+    @folders = current_user.folders.order(id: :asc).page(params[:page])
 
     if @word.update(word_params)
       flash[:success] = 'word は正常に更新されました'
       redirect_to word_path(@word.id)
     else
-      # flash.now[:danger] = 'word は更新されませんでした'
-      # render 'words/edit'
-      flash[:danger] = 'word は更新されませんでした'
-      redirect_to edit_word_path(@word.id)
+      flash.now[:danger] = 'word は更新されませんでした'
+      render :edit
     end
   end
 
