@@ -1,0 +1,21 @@
+#new-folder{
+    margin-top : 30px;
+}
+#words-in-the-folder{
+    margin-top : 20px;
+}
+
+.folder-list{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.folder-show-name{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.folder-edit-name{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}

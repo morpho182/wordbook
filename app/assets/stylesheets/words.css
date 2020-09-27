@@ -1,0 +1,29 @@
+.table {
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+#words-table .table-word{
+    width: 20%;
+}
+
+#words-table .table-definition{
+    width: 45%;
+}
+
+#words-table .table-link{
+    width: 10%;
+}
+
+#words-table .table-folder{
+    width: 25%;
+}
+
+.table-word-show-item{
+    width: 30%;
+}
+
+.table-word-show-content{
+    width: 70%;
+}

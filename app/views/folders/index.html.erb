@@ -5,20 +5,27 @@
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
       
-    <%= render 'folders/folders', folders: @folders %>
+    <ul class="folder-list list-group">
+      <% @folders.each do |folder| %>
+        <li class="list-name list-group-item">
+         <%= link_to folder.name, folder %>
+        </li>
+      <% end %>
+      <%= paginate @folders %>
+    </ul>
     
     <div id="new-folder">
-      <h3 align="center">Folder 新規作成</h3>
-    <%= form_with(model: @folder, local: true) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+      <h3 class="text-center">Folder 新規作成</h3>
+      <%= form_with(model: @folder, local: true) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
       
-      <div class="form-group">
-        <h5><%= f.label :name, 'Name' %></h5>
-        <%= f.text_field :name,  class: "form-control" %>
-      </div>
+        <div class="form-group">
+          <h5><%= f.label :name, 'Name' %></h5>
+          <%= f.text_field :name,  class: "form-control" %>
+        </div>
 
-      <%= f.submit '作成', class: 'btn btn-primary' %>
+        <%= f.submit '作成', class: 'btn btn-primary' %>
+      <% end %>
     </div>
-    <% end %>
   </div>
 </div>

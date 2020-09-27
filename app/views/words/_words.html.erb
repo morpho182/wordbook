@@ -1,10 +1,10 @@
 <div class="row">
   <table id="words-table" class="table table-striped table-bordered">
     <tr>
-      <th>Word</th>
-      <th>Definition</th>
-      <th>Link</th>
-      <th>Folder</th>
+      <th class="table-word">Word</th>
+      <th class="table-definition">Definition</th>
+      <th class="table-link">Link</th>
+      <th class="table-folder">Folder</th>
     </tr>
     <% words.each do |word| %>
       <tr>
@@ -24,9 +24,12 @@
         <% end %>
         
         <td>
-          <% word.folders.each do |folder| %>
-          <%= folder.name %> ,
+          <% str = "" %>
+          <% word.folders.each_with_index do |folder, index| %>
+            <% str += folder.name + ', ' %>
           <% end %>
+          <% str = str.chop %>
+          <%= str.chop %>
         </td>
       </tr>
     <% end %>
